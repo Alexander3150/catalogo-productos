@@ -39,7 +39,7 @@ function home(){
 function depto(i){
   setNav('');const d=DEPTS[i];if(!d)return home();
   app.innerHTML=`<div class="crumb"><a href="#/">Inicio</a> / ${esc(d[1])}</div><div class="ph1"><h1>${d[0]} ${esc(d[1])}</h1></div>
-  <div class="depts">${D.filter(c=>+c.id>=d[2]&&+c.id<=d[3]).map(c=>`<a class="dept" href="#/cat/${c.id}"><div class="ic">${d[0]}</div><b>${esc(c.n)}</b><span>Desde ${Q(Math.min(...c.p.map(p=>p.pr)))}</span></a>`).join('')}</div>`;
+  <div class="catgrid">${D.filter(c=>+c.id>=d[2]&&+c.id<=d[3]).map(c=>`<a class="ccard" href="#/cat/${c.id}"><div class="thumbs">${c.p.map(p=>p.img?`<img src="${p.img}" alt="" loading="lazy">`:`<span class="tph">${d[0]}</span>`).join('')}</div><div class="cinfo"><span class="cnum">${esc(c.id)}</span><b>${esc(c.n)}</b><span class="cfrom">Desde <strong>${Q(Math.min(...c.p.map(p=>p.pr)))}</strong> · 2 opciones</span></div><i class="go">→</i></a>`).join('')}</div>`;
 }
 function cat(id){
   setNav('');const k=D.findIndex(c=>c.id===id);if(k<0)return home();const c=D[k];
@@ -47,11 +47,12 @@ function cat(id){
   const dep=DEPTS.findIndex(x=>+id>=x[2]&&+id<=x[3]);
   app.innerHTML=`<div class="crumb"><a href="#/">Inicio</a> / <a href="#/depto/${dep}">${esc(DEPTS[dep][1])}</a> / ${esc(c.n)}</div>
   <div class="ph1"><h1>${esc(c.id)}. ${esc(c.n)}</h1></div>
+  <div class="sib">${D.filter(x=>+x.id>=DEPTS[dep][2]&&+x.id<=DEPTS[dep][3]).map(x=>`<a href="#/cat/${x.id}" class="${x.id===id?'on':''}">${esc(x.n)}</a>`).join('')}</div>
   <div class="vs">${cardVs(a,a===lo&&d>0)}<div class="vs-mid"><span>VS</span></div>${cardVs(b,b===lo&&d>0)}</div>
   <div class="diff"><b>${d?Q(d):'Mismo precio'}</b><p>${d?`<strong>${esc(lo.n)}</strong> cuesta ${pct}% menos que <strong>${esc(hi.n)}</strong>.`:'Ambas opciones tienen el mismo precio.'}</p></div>
   ${c.rec?`<div class="rec"><b>Recomendación:</b> ${esc(c.rec)}</div>`:''}
   <p class="note">Los precios y existencias pueden variar según la tienda.</p>
-  <div class="pn">${k>0?`<a href="#/cat/${D[k-1].id}">← ${esc(D[k-1].n)}</a>`:'<span></span>'}${k<D.length-1?`<a href="#/cat/${D[k+1].id}">${esc(D[k+1].n)} →</a>`:''}</div>`;
+  <nav class="pn" aria-label="Navegación entre categorías">${k>0?`<a class="pn-b prev" href="#/cat/${D[k-1].id}"><i>←</i><span><small>Anterior</small><b>${esc(D[k-1].n)}</b></span></a>`:'<span></span>'}<a class="pn-mid" href="#/depto/${dep}" aria-label="Volver al departamento">⊞<span>${esc(DEPTS[dep][1])}</span></a>${k<D.length-1?`<a class="pn-b next" href="#/cat/${D[k+1].id}"><span><small>Siguiente</small><b>${esc(D[k+1].n)}</b></span><i>→</i></a>`:'<span></span>'}</nav>`;
 }
 function cardVs(p,win){return card(p,{win}).replace('<div class="sp">','<div class="why">'+esc(p.w)+'</div><div class="sp">')}
 function results(params,titleOverride,list){
@@ -92,7 +93,7 @@ function modal(k){const p=find(k);if(!p)return;const m=$('#modal');
   m.hidden=false;document.body.style.overflow='hidden';m.querySelector('.mx').focus()}
 const closeM=()=>{$('#modal').hidden=true;document.body.style.overflow=''};
 
-function buildMega(){$('#megaBody').innerHTML=DEPTS.map((d,i)=>`<div><h4>${d[0]} ${esc(d[1])}</h4>${D.filter(c=>+c.id>=d[2]&&+c.id<=d[3]).map(c=>`<a href="#/cat/${c.id}">${esc(c.n)}</a>`).join('')}</div>`).join('')}
+function buildMega(){$('#megaBody').innerHTML=DEPTS.map((d,i)=>`<section class="mg"><a class="mg-h" href="#/depto/${i}"><span class="mg-ic">${d[0]}</span><b>${esc(d[1])}</b><em>${d[3]-d[2]+1}</em></a><ul>${D.filter(c=>+c.id>=d[2]&&+c.id<=d[3]).map(c=>`<li><a href="#/cat/${c.id}">${esc(c.n)}</a></li>`).join('')}</ul></section>`).join('')}
 function toggleMega(f){const m=$('#mega');m.hidden=f!==undefined?!f:!m.hidden;$('#btnCats').setAttribute('aria-expanded',!m.hidden)}
 
 function route(){

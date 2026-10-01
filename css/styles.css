@@ -93,3 +93,55 @@ main{padding:28px 0 60px;min-height:70vh}
 @media(max-width:960px){.nav{display:none}.burger{display:grid}.layout{grid-template-columns:1fr}.fbtn{display:inline-flex}.filters{position:static;display:none}.filters.open{display:block}.trust{grid-template-columns:1fr 1fr}.search{max-width:none}}
 @media(max-width:720px){.hero{padding:34px 22px;border-radius:22px}.vs{grid-template-columns:1fr}.vs-mid span{width:40px;height:40px}.mbox{grid-template-columns:1fr}.mbox .pic{border-radius:24px 24px 0 0;min-height:240px}.bar{gap:10px}.logo span:last-child{display:none}.trust{grid-template-columns:1fr}.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.price{font-size:1.15rem}.acts .btn.ghost{display:none}.pn a{max-width:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ===== R&M Tech: marca ===== */
+.logo-img{display:grid;place-items:center;background:#000;border-radius:12px;padding:3px 6px;box-shadow:0 4px 14px rgba(29,78,216,.28);flex:none}
+.logo-img img{height:38px;width:auto;border-radius:6px}
+.logo-txt{font-weight:700;font-size:1.2rem;letter-spacing:-.02em}.logo-txt b{color:var(--blue2)}
+.logo.light .logo-txt b{color:#8fb0ff}
+/* ===== Mega menú de categorías ===== */
+.mega{padding:28px 0 32px;border-top:1px solid var(--line)}
+.mega .wrap{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.mg{background:#f6f9ff;border:1px solid var(--line);border-radius:18px;padding:14px 14px 10px}
+.mg-h{display:flex;align-items:center;gap:10px;padding:2px 2px 10px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.mg-ic{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#dfe9ff,#c7d9ff);display:grid;place-items:center;font-size:1.2rem;flex:none}
+.mg-h b{flex:1;font-size:.92rem;color:var(--navy);line-height:1.2}
+.mg-h em{font-style:normal;font-size:.72rem;font-weight:700;color:var(--blue);background:#e0eaff;border-radius:99px;padding:2px 9px}
+.mg-h:hover b{color:var(--blue2)}
+.mg ul{list-style:none;margin:0;padding:0}
+.mg li a{display:block;padding:6px 10px;margin:1px 0;border-radius:9px;font-size:.84rem;color:#475569;line-height:1.3}
+.mg li a:hover{background:#fff;color:var(--blue2);box-shadow:0 2px 8px rgba(29,78,216,.1);transform:none}
+/* ===== Lista de categorías de un departamento ===== */
+.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.ccard{position:relative;display:flex;align-items:center;gap:16px;background:#fff;border-radius:20px;padding:14px 16px 14px 14px;box-shadow:var(--sh);border:1px solid transparent;transition:.25s}
+.ccard:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:#cfe0ff}
+.thumbs{display:flex;flex:none;width:112px;height:76px;position:relative}
+.thumbs img,.tph{width:70px;height:70px;border-radius:16px;background:#f3f7ff;border:2px solid #fff;box-shadow:0 4px 12px rgba(15,42,122,.14);object-fit:contain;padding:5px;display:grid;place-items:center;font-size:1.6rem}
+.thumbs>*:first-child{position:absolute;left:0;top:3px;z-index:1}.thumbs>*:last-child{position:absolute;right:0;top:3px}
+.cinfo{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.cinfo b{font-size:.96rem;line-height:1.3;color:var(--ink)}
+.cnum{font-size:.68rem;font-weight:700;letter-spacing:.08em;color:var(--blue2)}
+.cfrom{font-size:.78rem;color:var(--mut)}.cfrom strong{color:var(--blue)}
+.go{font-style:normal;flex:none;width:34px;height:34px;border-radius:50%;background:#eaf0ff;color:var(--blue);display:grid;place-items:center;transition:.25s}
+.ccard:hover .go{background:var(--blue2);color:#fff;transform:translateX(3px)}
+/* ===== Chips de categorías hermanas ===== */
+.sib{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 14px;margin:-6px 0 14px;scrollbar-width:thin}
+.sib a{flex:none;font-size:.8rem;font-weight:500;padding:7px 14px;border-radius:99px;background:#fff;color:#475569;border:1px solid var(--line);white-space:nowrap}
+.sib a:hover{border-color:var(--blue2);color:var(--blue2)}.sib a.on{background:var(--blue2);border-color:var(--blue2);color:#fff;font-weight:600}
+/* ===== Navegación inferior ===== */
+.pn{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-top:34px;justify-content:initial}
+.pn-b{display:flex;align-items:center;gap:14px;background:#fff;border-radius:20px;padding:14px 18px;box-shadow:var(--sh);border:1px solid transparent;transition:.25s;max-width:none;min-width:0;font-size:inherit}
+.pn-b span{display:flex;flex-direction:column;min-width:0}.pn-b small{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.pn-b b{font-size:.92rem;line-height:1.3;color:var(--ink)}
+.pn-b.next{justify-content:flex-end;text-align:right}
+.pn-b i{font-style:normal;flex:none;width:42px;height:42px;border-radius:50%;background:#eaf0ff;color:var(--blue);display:grid;place-items:center;font-size:1.1rem;transition:.25s}
+.pn-b:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:#cfe0ff;color:inherit}
+.pn-b:hover i{background:var(--blue2);color:#fff}.pn-b.prev:hover i{transform:translateX(-3px)}.pn-b.next:hover i{transform:translateX(3px)}
+.pn-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px 18px;border-radius:20px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;font-size:1.3rem;box-shadow:var(--sh);transition:.25s;max-width:none}
+.pn-mid span{font-size:.7rem;font-weight:600;color:#c8d6ff;max-width:130px;text-align:center;line-height:1.2}
+.pn-mid:hover{transform:translateY(-3px);box-shadow:var(--sh2);color:#fff}
+@media(max-width:720px){.pn{grid-template-columns:1fr 1fr}.pn-mid{grid-column:1/-1;order:3;flex-direction:row;gap:10px;padding:12px}.pn-mid span{max-width:none}.pn-b{padding:12px}.pn-b i{width:34px;height:34px}.pn-b b{font-size:.82rem}.catgrid{grid-template-columns:1fr}.logo span:last-child{display:inline}.logo-txt{font-size:1.05rem}.logo-img img{height:32px}.bar{gap:8px}}
+@media(max-width:480px){.logo-txt{display:none}}
+.pn a.pn-b{background:#fff;padding:14px 18px;border-radius:20px;max-width:none;font-size:inherit;font-weight:400;box-shadow:var(--sh)}
+.pn a.pn-b:hover{box-shadow:var(--sh2)}
+.pn a.pn-mid{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:10px 18px;border-radius:20px;max-width:none;font-size:1.3rem}
+@media(max-width:720px){.pn a.pn-b{padding:12px}.pn a.pn-mid{padding:12px}}
